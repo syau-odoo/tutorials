@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <record id="estate_property_type_action" model="ir.actions.act_window">
+        <field name="name">Property Type</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <record id="view_offers" model="ir.actions.act_window">
+        <field name="name">View Offers</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('property_type_id', '=', active_id)]</field>
+        <field name="context">{'search_default_property_type_id': active_id}</field>
+    </record>
+    <record id="estate_property_type_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Property Types">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="action" name="%(view_offers)d" 
+                            icon="fa-money">
+                            <field string="Offers" name="offer_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <h1>
+                            <field name="name" placeholder="e.g House on the Hills"/>
+                        </h1>
+                    </div>
+                 
+                        <notebook>
+                            <page string="Properties">
+                                    <field name="property_ids">
+                                        <tree>
+                                            <field name="name" string="Title"/>
+                                            <field name="expected_price"/>
+                                            <field name="state" string="Status"/>
+                                        </tree>
+                                    </field>
+                            </page>
+                        </notebook>
+               
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</data>
