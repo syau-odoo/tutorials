@@ -48,7 +48,7 @@ class OfferModel(models.Model):
         self.status = 'refused'
         self.property_id.selling_price = 0
         self.property_id.buyer = {}
-        self.property_id.state = 'canceled'
+        
 
     @api.model
     def create(self, vals):
